@@ -3,8 +3,6 @@ import userModel from "@/models/userModel";
 import bcrypt from "bcryptjs";
 
 export async function POST(req: NextRequest) {
-  console.log("new");
-
   try {
     const { password, token } = await req.json(); // Extract request body
 
@@ -27,8 +25,6 @@ export async function POST(req: NextRequest) {
 
     // Update user password & clear reset token
     user.password = hashedPassword;
-    user.forgotPasswordToken = undefined;
-    user.forgotPasswordExpiry = undefined;
     await user.save();
 
     return NextResponse.json(
