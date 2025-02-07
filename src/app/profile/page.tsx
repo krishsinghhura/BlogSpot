@@ -58,7 +58,7 @@ export default function Profile() {
   };
 
   const editPost = async (id: string) => {
-    router.push(`/edit/${id}`);
+    router.push(`/edit?id=${id}`);
   };
   return (
     <>
