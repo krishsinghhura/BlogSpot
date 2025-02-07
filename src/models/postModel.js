@@ -1,9 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
+// Define the Mongoose schema
 const postSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User", // Reference to the User model
+    required: true,
   },
   title: {
     type: String,
@@ -19,8 +21,10 @@ const postSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
-module.exports = mongoose.model("post", postSchema);
+const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
+
+export default Post;

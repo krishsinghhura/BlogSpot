@@ -25,7 +25,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    var token = jwt.sign({ id: user._id, email }, process.env.TOKEN_SECRET!);
+    var token = jwt.sign(
+      { id: user._id, email, name: user.username },
+      process.env.TOKEN_SECRET!
+    );
 
     const check = bcrypt.compareSync(password, user.password);
     if (check) {

@@ -16,8 +16,14 @@ const userSchema = new mongoose.Schema({
   forgotPasswordExpiry: Date,
   verifyToken: String,
   verifyTokenExpiry: Date,
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 });
 
-const user = mongoose.models.user || mongoose.model("user", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
-export default user;
+export default User;

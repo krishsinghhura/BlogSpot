@@ -24,7 +24,7 @@ export default function LoginPage() {
       const response = await axios.post("/api/users/login", user);
       if (response.data.isVerfied) {
         Cookies.set("token", response.data.token);
-        router.push("/profile");
+        router.push("/");
       } else {
         router.push("/notVerified");
       }
